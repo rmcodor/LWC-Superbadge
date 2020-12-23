@@ -1,1 +1,25 @@
-<template> </template>
+<template if:true={data}>
+  <lightning-tabset variant="scoped">
+    <lightning-tab label="Gallery">
+      <div class="slds-scrollable_y">
+        <lightning-layout multiple-rows horizontal-align="center">
+          <template for:each={boats} for:item="boat">
+            <lightning-layout-item
+              padding="around-small"
+              size="12"
+              medium-device-size=""
+              large-device-size="3"
+              small-device-size="6"
+              alignment-bump="left"
+              key={boat.Id}
+            >
+              <c-boat-tile boat={boat}></c-boat-tile>
+            </lightning-layout-item>
+          </template>
+        </lightning-layout>
+      </div>
+    </lightning-tab>
+    <lightning-tab label="Boat Editor"> Two Content ! </lightning-tab>
+    <lightning-tab label="Boats Near Me"> 4 Three Content ! </lightning-tab>
+  </lightning-tabset>
+</template>

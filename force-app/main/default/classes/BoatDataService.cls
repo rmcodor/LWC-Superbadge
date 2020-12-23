@@ -10,7 +10,7 @@ public with sharing class BoatDataService {
       'SELECT ' +
       'Id, Name, Description__c, Geolocation__Latitude__s, ' +
       'Geolocation__Longitude__s, Picture__c, Contact__r.Name, ' +
-      'BoatType__c, BoatType__r.Name, Length__c, Price__c, Owner.Name ' +
+      'BoatType__c, BoatType__r.Name, Length__c, Price__c ' +
       'FROM Boat__c';
     if (String.isNotBlank(boatTypeId)) {
       query += ' WHERE BoatType__c = :boatTypeId';
