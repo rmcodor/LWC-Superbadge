@@ -3,6 +3,8 @@ import getBoats from "@salesforce/apex/BoatDataService.getBoats";
 import updateBoatList from "@salesforce/apex/BoatDataService.updateBoatList";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
+import { publish, MessageContext } from "lightning/messageService";
+import BOATMC from "@salesforce/messageChannel/BoatMessageChannel__c";
 const SUCCESS_VARIANT = "success";
 const SUCCESS_TITLE = "Success";
 const MESSAGE_SHIP_IT = "Ship It!";
@@ -17,7 +19,7 @@ export default class BoatSearchResults extends LightningElement {
   selectedBoatId;
   provisionBoats;
   draftValues;
-  // wired message context
+  @wire(MessageContext)
   messageContext;
   columns = [
     { label: "Name", fieldName: "Name", type: "text", editable: true },
@@ -59,6 +61,7 @@ export default class BoatSearchResults extends LightningElement {
   // Publishes the selected boat Id on the BoatMC.
   sendMessageService(boatId) {
     // explicitly pass boatId to the parameter recordId
+    publish(this.messageContext, BOATMC, { recordId: boatId });
   }
   // this public function must refresh the boats asynchronously
   // uses notifyLoading
@@ -73,6 +76,7 @@ export default class BoatSearchResults extends LightningElement {
   // this function must update selectedBoatId and call sendMessageService
   updateSelectedTile(event) {
     this.selectedBoatId = event.detail.boatId;
+    this.sendMessageService(this.selectedBoatId);
   }
   // Check the current value of isLoading before dispatching the doneloading or loading custom event
   notifyLoading(isLoading) {
