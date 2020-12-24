@@ -26,24 +26,28 @@
         </div>
       </lightning-tab>
       <lightning-tab label="Boat Editor">
-        <div class="slds-scrollable_y">
-          <lightning-layout multiple-rows horizontal-align="center">
-            <lightning-layout-item
-              padding="around-small"
-              size="12"
-              medium-device-size="12"
-            >
-              <lightning-datatable
-                key-field="Id"
-                data={boats}
-                columns={columns}
-                onsave={handleSave}
-                draft-values={draftValues}
+        <template if:true={boats.data}>
+          <div class="slds-scrollable_y">
+            <lightning-layout multiple-rows horizontal-align="center">
+              <lightning-layout-item
+                padding="around-small"
+                size="12"
+                medium-device-size="12"
               >
-              </lightning-datatable>
-            </lightning-layout-item>
-          </lightning-layout>
-        </div>
+                <lightning-datatable
+                  key-field="Id"
+                  data={boats}
+                  columns={columns}
+                  onsave={handleSave}
+                  draft-values={draftValues}
+                  hide-checkbox-column
+                  show-row-number-column
+                >
+                </lightning-datatable>
+              </lightning-layout-item>
+            </lightning-layout>
+          </div>
+        </template>
       </lightning-tab>
       <lightning-tab label="Boats Near Me">
         <c-boats-near-me boat-type-id={boatTypeId}></c-boats-near-me>

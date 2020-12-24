@@ -70,7 +70,7 @@ export default class BoatSearchResults extends LightningElement {
     // Clear all draft values
     this.draftValues = [];
     // Display fresh data in the datatable
-    await refreshApex(this.provisionBoats);
+    await refreshApex(this.boats);
     this.notifyLoading(false);
   }
   // this function must update selectedBoatId and call sendMessageService

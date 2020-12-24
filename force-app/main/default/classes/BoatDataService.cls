@@ -19,6 +19,7 @@ public with sharing class BoatDataService {
     query += ' WITH SECURITY_ENFORCED ';
     return Database.query(query);
   }
+  @AuraEnabled(cacheable=true)
   public static List<Boat__c> getSimilarBoats(Id boatId, String similarBy) {
     List<Boat__c> similarBoats = new List<Boat__c>();
     List<Boat__c> parentBoat = [
@@ -92,6 +93,7 @@ public with sharing class BoatDataService {
     }
     return similarBoats;
   }
+  @AuraEnabled(cacheable=true)
   public static List<BoatType__c> getBoatTypes() {
     return [
       SELECT Name, Id
@@ -100,6 +102,7 @@ public with sharing class BoatDataService {
       ORDER BY Name
     ];
   }
+  @AuraEnabled(cacheable=false)
   public static List<BoatReview__c> getAllReviews(Id boatId) {
     return [
       SELECT
@@ -119,6 +122,7 @@ public with sharing class BoatDataService {
     ];
   }
   // Assume this may be an API that return this data, not a SOQL query
+  @AuraEnabled(cacheable=true)
   public static String getBoatsByLocation(
     Decimal latitude,
     Decimal longitude,
