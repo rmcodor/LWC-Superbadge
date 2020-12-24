@@ -2,7 +2,7 @@ import { LightningElement, api, wire, track } from "lwc";
 import getBoats from "@salesforce/apex/BoatDataService.getBoats";
 
 export default class BoatSearchResults extends LightningElement {
-  boatTypeId;
+  boatTypeId = "";
   @track
   boats;
   error;

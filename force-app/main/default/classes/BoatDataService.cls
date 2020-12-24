@@ -13,12 +13,12 @@ public with sharing class BoatDataService {
       'BoatType__c, BoatType__r.Name, Length__c, Price__c ' +
       'FROM Boat__c';
     if (String.isNotBlank(boatTypeId)) {
+      System.debug('boatTypeId = ' + boatTypeId);
       query += ' WHERE BoatType__c = :boatTypeId';
     }
     query += ' WITH SECURITY_ENFORCED ';
     return Database.query(query);
   }
-
   public static List<Boat__c> getSimilarBoats(Id boatId, String similarBy) {
     List<Boat__c> similarBoats = new List<Boat__c>();
     List<Boat__c> parentBoat = [
@@ -92,7 +92,6 @@ public with sharing class BoatDataService {
     }
     return similarBoats;
   }
-
   public static List<BoatType__c> getBoatTypes() {
     return [
       SELECT Name, Id
@@ -101,7 +100,6 @@ public with sharing class BoatDataService {
       ORDER BY Name
     ];
   }
-
   public static List<BoatReview__c> getAllReviews(Id boatId) {
     return [
       SELECT
@@ -120,7 +118,6 @@ public with sharing class BoatDataService {
       ORDER BY CreatedDate DESC
     ];
   }
-
   // Assume this may be an API that return this data, not a SOQL query
   public static String getBoatsByLocation(
     Decimal latitude,
