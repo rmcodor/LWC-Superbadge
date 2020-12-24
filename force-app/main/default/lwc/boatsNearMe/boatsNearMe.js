@@ -72,6 +72,7 @@ export default class BoatsNearMe extends LightningElement {
   // Creates the map markers
   createMapMarkers(boatData) {
     if (boatData) {
+      boatData = JSON.parse(boatData);
       let newMarkers = boatData.map((boat) => {
         return {
           location: {
