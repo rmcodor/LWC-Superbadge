@@ -6,13 +6,15 @@ export default class BoatSearchResults extends LightningElement {
   @track
   boats;
   error;
+  selectedBoatId;
   /**
    *
    * @param {String} boatTypeId
    */
   @api
-  async searchBoats(boatTypeId) {
+  searchBoats(boatTypeId) {
     this.boatTypeId = boatTypeId;
+    console.log("this.boatTypeId", this.boatTypeId);
     // this.dispatchEvent(new CustomEvent("loading"));
     // this.dispatchEvent(new CustomEvent("doneloading"));
   }
@@ -24,5 +26,8 @@ export default class BoatSearchResults extends LightningElement {
       this.boats = [];
       this.error = error;
     }
+  }
+  handleSelectedBoat(event) {
+    this.selectedBoatId = event.detail.boatId;
   }
 }
