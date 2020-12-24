@@ -1,0 +1,22 @@
+<template>
+  <template if:true={boats}>
+    <div class="slds-scrollable_y">
+      <lightning-layout multiple-rows horizontal-align="center">
+        <lightning-layout-item
+          padding="around-small"
+          size="12"
+          medium-device-size="12"
+        >
+          <lightning-datatable
+            key-field="Id"
+            data={boats}
+            columns={columns}
+            onsave={handleSave}
+            draft-values={draftValues}
+          >
+          </lightning-datatable>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+  </template>
+</template>

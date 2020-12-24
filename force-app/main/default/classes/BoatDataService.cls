@@ -132,7 +132,7 @@ public with sharing class BoatDataService {
     query += ' WITH SECURITY_ENFORCED ORDER BY DISTANCE(Geolocation__c, GEOLOCATION(:latitude, :longitude), \'mi\') LIMIT 10';
     return JSON.serialize(Database.query(query));
   }
-
+  @AuraEnabled
   public static String updateBoatList(Object data) {
     List<Boat__c> boatsForUpdate = (List<Boat__c>) JSON.deserialize(
       JSON.serialize(data),

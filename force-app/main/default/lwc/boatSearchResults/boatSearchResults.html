@@ -18,13 +18,16 @@
                   boat={boat}
                   selected-boat-id={selectedBoatId}
                   onboatselect={handleSelectedBoat}
-                ></c-boat-tile>
+                >
+                </c-boat-tile>
               </lightning-layout-item>
             </template>
           </lightning-layout>
         </div>
       </lightning-tab>
-      <lightning-tab label="Boat Editor"> Two Content ! </lightning-tab>
+      <lightning-tab label="Boat Editor">
+        <c-boat-editor boats={boats}></c-boat-editor>
+      </lightning-tab>
       <lightning-tab label="Boats Near Me"> 4 Three Content ! </lightning-tab>
     </lightning-tabset>
   </template>
