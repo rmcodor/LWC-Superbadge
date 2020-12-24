@@ -7,7 +7,7 @@ const SUCCESS_VARIANT = "success";
 const SUCCESS_TITLE = "Success";
 const MESSAGE_SHIP_IT = "Ship It!";
 const ERROR_VARIANT = "error";
-const CONST_ERROR = "Error ocurred";
+const ERROR_TITLE = "Error";
 export default class BoatEditor extends LightningElement {
   columns = [
     { label: "Name", fieldName: "Name", type: "text", editable: true },
@@ -53,7 +53,7 @@ export default class BoatEditor extends LightningElement {
       console.log(error);
       this.dispatchEvent(
         new ShowToastEvent({
-          title: CONST_ERROR,
+          title: ERROR_TITLE,
           message: error.message,
           variant: ERROR_VARIANT
         })

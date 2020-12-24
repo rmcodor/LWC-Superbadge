@@ -17,7 +17,7 @@
                 <c-boat-tile
                   boat={boat}
                   selected-boat-id={selectedBoatId}
-                  onboatselect={handleSelectedBoat}
+                  onboatselect={updateSelectedTile}
                 >
                 </c-boat-tile>
               </lightning-layout-item>
@@ -26,9 +26,28 @@
         </div>
       </lightning-tab>
       <lightning-tab label="Boat Editor">
-        <c-boat-editor boats={boats}></c-boat-editor>
+        <div class="slds-scrollable_y">
+          <lightning-layout multiple-rows horizontal-align="center">
+            <lightning-layout-item
+              padding="around-small"
+              size="12"
+              medium-device-size="12"
+            >
+              <lightning-datatable
+                key-field="Id"
+                data={boats}
+                columns={columns}
+                onsave={handleSave}
+                draft-values={draftValues}
+              >
+              </lightning-datatable>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
       </lightning-tab>
-      <lightning-tab label="Boats Near Me"> 4 Three Content ! </lightning-tab>
+      <lightning-tab label="Boats Near Me">
+        <c-boats-near-me boat-type-id={boatTypeId}></c-boats-near-me>
+      </lightning-tab>
     </lightning-tabset>
   </template>
 </template>
