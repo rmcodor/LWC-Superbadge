@@ -20,11 +20,8 @@ export default class FiveStarRating extends LightningElement {
   isRendered;
 
   //getter function that returns the correct class depending on if it is readonly
-  starClass() {
-    if (!this.readOnly) {
-      return EDITABLE_CLASS;
-    }
-    return READ_ONLY_CLASS;
+  get starClass() {
+    return this.readOnly ? READ_ONLY_CLASS : EDITABLE_CLASS;
   }
 
   // Render callback to load the script once the component renders.
