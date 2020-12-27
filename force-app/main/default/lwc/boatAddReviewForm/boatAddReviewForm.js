@@ -2,9 +2,7 @@ import { LightningElement, api, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import NAME_FIELD from "@salesforce/schema/BoatReview__c.Name";
 import COMMENT_FIELD from "@salesforce/schema/BoatReview__c.Comment__c";
-//import RATING_FIELD from '@salesforce/schema/BoatReview__c.Rating__c';
 import BOAT_REVIEW_OBJECT from "@salesforce/schema/BoatReview__c";
-// import BOAT_FIELD from '@salesforce/schema/BoatReview__c.Boat__c';
 const SUCCESS_TITLE = "Review Created!";
 const SUCCESS_VARIANT = "success";
 export default class BoatAddReviewForm extends LightningElement {
@@ -55,7 +53,6 @@ export default class BoatAddReviewForm extends LightningElement {
     this.dispatchEvent(new CustomEvent("createreview"));
   }
   // Clears form data upon submission
-  // TODO: it must reset each lightning-input-field
   handleReset() {
     const inputFields = this.template.querySelectorAll("lightning-input-field");
     if (inputFields) {
